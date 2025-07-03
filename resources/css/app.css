@@ -1,0 +1,107 @@
+body {
+    background-color: #1e1e2f;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: #2a2a40;
+    padding: 1.5rem;
+    position: fixed;
+    width: 240px;
+}
+
+.main-content {
+    margin-left: 260px;
+    padding: 2rem;
+}
+
+.nav-link,
+.btn-link {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.nav-link:hover,
+.btn-link:hover {
+    color: #00bcd4;
+}
+
+.card {
+    background-color: #2f2f44;
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card-img-top {
+    border-radius: 0.5rem 0.5rem 0 0;
+    object-fit: cover;
+    height: 200px;
+}
+
+.card.bg-dark,
+.card-custom {
+    background-color: #2a2a40 !important;
+    border: none;
+}
+
+.tag-btn {
+    background-color: #3e3e5e;
+    border: none;
+    color: #fff;
+    margin: 2px;
+    padding: 4px 10px;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+}
+
+footer {
+    margin-top: 4rem;
+    text-align: center;
+    color: #888;
+}
+
+.search-bar input {
+    background-color: #2a2a40;
+    border: 1px solid #444;
+    color: #fff;
+}
+
+.search-bar input::placeholder {
+    color: #ccc;
+}
+
+.search-bar .btn {
+    background-color: #00bcd4;
+    border: none;
+    color: #fff;
+}
+
+.search-bar .btn:hover {
+    background-color: #0097a7;
+}
+
+.form-control {
+    background-color: #3a3a55 !important;
+    color: #f0f0f0;
+    border: none;
+}
+
+.form-control::placeholder {
+    color: #ccc;
+}
+
+label,
+.card-body h4 {
+    color: #f0f0f0;
+}
+
+#tags li {
+    display: inline-block;
+    margin-bottom: 0;
+}
