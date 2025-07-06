@@ -51,7 +51,6 @@ class ImageController extends Controller
             'file' => 'required|image|mimes:jpg,jpeg,png,gif',
             'tags' => 'nullable|string',
         ]);
-    
 
         $image = new Image();
         $image->path = basename($request->file('file')->store('images', 'public'));
@@ -61,6 +60,11 @@ class ImageController extends Controller
         $image->save();
 
         return redirect()->route('images.index');
+    }
+
+    public function detail($image) {
+        $image = Image::where('path', $image)->first();
+        return view('images.detail', compact('image'));
     }
     
 }

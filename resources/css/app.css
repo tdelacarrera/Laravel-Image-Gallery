@@ -105,3 +105,16 @@ label,
     display: inline-block;
     margin-bottom: 0;
 }
+img {
+    width: 100%;
+    height: 300px;
+}
+
+
+li{
+    color: white;
+}
+
+.card-title{
+    color: white;
+}

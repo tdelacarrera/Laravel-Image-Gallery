@@ -9,10 +9,11 @@ use App\Http\Controllers\AuthenticationController;
 
  
 Route::prefix('images')->name('images.')->group(function() {
-    Route::get('index', [ImageController::class, 'index'])->name('index');
+    Route::get('', [ImageController::class, 'index'])->name('index');
     Route::get('search', [ImageController::class, 'search'])->name('search');
     Route::get('create', [ImageController::class, 'create'])->name('create');
     Route::post('store', [ImageController::class, 'store'])->name('store');
+    Route::get('/{image}', [ImageController::class, 'detail'])->name('detail');
 });
 Route::prefix('users')->name('users.')->group(function() {
     Route::get('index', [UserController::class, 'index'])->name('index');
