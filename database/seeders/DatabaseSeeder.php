@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-           Image::factory(5)->create();
+           Image::factory(50)->create();
            User::factory(50)->create();
     }
 }

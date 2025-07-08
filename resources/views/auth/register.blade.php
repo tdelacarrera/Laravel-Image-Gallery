@@ -5,7 +5,7 @@
             <div class="card bg-dark border-0 shadow-sm">
                 <div class="card-body">
                     <h4 class="text-center text-light mb-4">Registro</h4>
-                    <form method="POST" action="{{ route('users.store') }}">
+                    <form method="POST" action="{{ route('auth.register') }}">
                         @csrf
 
                         <div class="mb-3">
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="text-center text-light">
-                            ¿Ya tienes cuenta? <a href="{{ route('users.login') }}" class="text-info">Inicia sesión</a>
+                            ¿Ya tienes cuenta? <a href="{{ route('auth.login') }}" class="text-info">Inicia sesión</a>
                         </div>
                     </form>
                    @if($errors->any())

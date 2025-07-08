@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -25,7 +26,7 @@ class UserController extends Controller
         $user->email =  $request->email;
         $user->password = bcrypt($request->password);
         $user->save();
-        return redirect()->route('images.index')->with('success', 'Usuario creado con éxito');
+        return redirect()->route('users.index')->with('success', 'Usuario creado con éxito');
     }
 
     public function update(Request $request, Int $id) {
@@ -49,13 +50,4 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('users.index')->with('success', 'Usuario eliminado con éxito');
     }
-
-    public function register(){
-        return view('users.register');
-    }
-
-    public function login(){
-        return view('users.login');
-    }
-
 }

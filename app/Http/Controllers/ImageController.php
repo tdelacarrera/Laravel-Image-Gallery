@@ -62,9 +62,9 @@ class ImageController extends Controller
         return redirect()->route('images.index');
     }
 
-    public function detail($image) {
+    public function show($image) {
         $image = Image::where('path', $image)->first();
-        return view('images.detail', compact('image'));
+        return view('images.show', compact('image'));
     }
     
 }

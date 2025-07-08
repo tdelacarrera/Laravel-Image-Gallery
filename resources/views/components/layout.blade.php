@@ -18,11 +18,21 @@
     <div class="sidebar">
         <h4 class="mb-4">Galería</h4>
         <nav class="nav flex-column">
-            <a class="nav-link" href="{{ route('images.index') }}">📁 Imágenes</a>
-            <a class="nav-link" href="{{ route('images.create') }}">📤 Subir Imagen</a>
-            <a class="nav-link" href="{{ route('users.index') }}">👤 Usuarios</a>
-            <a class="nav-link" href="{{ route('users.register') }}">📝 Registro</a>
-            <a class="nav-link" href="{{ route('users.login') }}">🔐 Iniciar Sesión</a>
+            <a class="nav-link" href="{{ route('images.index') }}">Imágenes</a>
+             @auth
+            <a class="nav-link" href="{{ route('images.create') }}">Subir Imagen</a>
+            <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
+            @endauth
+            @guest
+            <a class="nav-link" href="{{ route('auth.register') }}">Registro</a>
+            <a class="nav-link" href="{{ route('auth.login') }}">Iniciar Sesión</a>
+            @endguest
+            @auth
+            <form action="{{ route('auth.logout')}}" method="POST">
+                @csrf
+                <button class="btn text-white">Cerrar Sesión</button>
+            </form>
+            @endauth
         </nav>
     </div>
 
