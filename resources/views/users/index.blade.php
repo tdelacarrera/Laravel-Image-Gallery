@@ -17,6 +17,7 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Email</th>
+                            <th>Fecha de registro</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -26,6 +27,7 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->created_at }}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editModal{{ $user->id }}">
                                     Editar
@@ -40,7 +42,17 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                @if($errors->any())
+                    <ul class="px-4 py-2 bg-red100">
+                        @foreach($errors->all() as $error)
+                            <li class="my-2 text-red-500">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+
             </div>
+            {{$users->links()}}
         </div>
     </div>
 
