@@ -1,4 +1,4 @@
-# Image Gallery
+# About this project
 
 A simple image gallery web application built with Laravel.
 
@@ -27,18 +27,22 @@ Follow these steps to set up the project locally
 
     cp .env.example .env
 
-**4.  Run migrations, seed data, generate key and create storage link**
+**4. Create the MySQL database**
+
+Create a new database and update your .env
+
+**5.  Run migrations, seed data, generate key and create storage link**
 
     php artisan migrate
     php artisan db:seed
     php artisan key:generate
     php artisan storage:link
     
-**5. Build frontend assets**
+**6. Build frontend assets**
 
     npm run dev
 
-**6. Start the server**
+**7. Start the server**
 
     php artisan serve
 
