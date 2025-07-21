@@ -7,7 +7,7 @@
 
 
 
-    <title>Galería Moderna</title>
+    <title>Galería de Imágenes</title>
 </head>
 <body>
 
