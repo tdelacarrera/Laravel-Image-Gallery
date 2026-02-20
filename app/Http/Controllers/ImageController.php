@@ -48,6 +48,7 @@ class ImageController extends Controller
         $request->validate([
             'file' => 'required|image|mimes:jpg,jpeg,png,gif',
             'tags' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $image = new Image();

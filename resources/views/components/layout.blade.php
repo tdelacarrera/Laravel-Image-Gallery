@@ -19,6 +19,7 @@
              @auth
             <a class="nav-link" href="{{ route('images.create') }}">Subir Imagen</a>
             <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
+            <a class="nav-link" href="{{ route('categories.index') }}">Categorías</a>
             @endauth
             @guest
             <a class="nav-link" href="{{ route('auth.register') }}">Registro</a>

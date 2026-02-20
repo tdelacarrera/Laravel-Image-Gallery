@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Image>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
  */
-class ImageFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,7 @@ class ImageFactory extends Factory
     public function definition(): array
     {
         return [
-            'path' => '/empty.png',
-            'tags' => implode(', ', fake()->words(3)),
-            'category_id' => 1
+            'name' => $this->faker->unique()->word(),
         ];
     }
 }
