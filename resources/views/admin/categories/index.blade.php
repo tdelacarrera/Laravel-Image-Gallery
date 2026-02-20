@@ -29,7 +29,7 @@
                                     Editar
                                 </button>
 
-                                <form action="{{ route('categories.destroy', $category) }}" method="POST" class="d-inline">
+                                <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta categoría?')">Eliminar</button>
@@ -58,7 +58,7 @@
     <div class="modal fade" id="editModal{{ $category->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $category->id }}" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content card bg-dark">
-                <form method="POST" action="{{ route('categories.update', $category) }}">
+                <form method="POST" action="{{ route('admin.categories.update', $category) }}">
                     @csrf
                     @method('PUT')
                     <div class="modal-header border-0">
@@ -85,7 +85,7 @@
     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content card bg-dark">
-                <form method="POST" action="{{ route('categories.store') }}">
+                <form method="POST" action="{{ route('admin.categories.store') }}">
                     @csrf
                     <div class="modal-header border-0">
                         <h5 class="modal-title text-white" id="createModalLabel">Crear Categoría</h5>

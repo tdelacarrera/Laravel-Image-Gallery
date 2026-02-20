@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('id', 'desc')->paginate(10);
-        return view('categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -34,7 +34,7 @@ class CategoryController extends Controller
         ]);
 
         Category::create($data);
-        return redirect()->route('categories.index')->with('success', 'Categoria creada con éxito');
+        return redirect()->route('admin.categories.index')->with('success', 'Categoria creada con éxito');
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect()->route('categories.index')->with('success', 'Categoría actualizada con éxito');
+        return redirect()->route('admin.categories.index')->with('success', 'Categoría actualizada con éxito');
     }
 
     /**
@@ -74,6 +74,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Usuario eliminado con éxito');
+        return redirect()->route('admin.categories.index')->with('success', 'Usuario eliminado con éxito');
     }
 }

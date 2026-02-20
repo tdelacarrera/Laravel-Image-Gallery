@@ -33,7 +33,7 @@
                                     Editar
                                 </button>
 
-                                <form action="{{ route('users.destroy', $user) }}" method="POST" class="d-inline">
+                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</button>
@@ -62,7 +62,7 @@
     <div class="modal fade" id="editModal{{ $user->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $user->id }}" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content card bg-dark">
-                <form method="POST" action="{{ route('users.update', $user) }}">
+                <form method="POST" action="{{ route('admin.users.update', $user) }}">
                     @csrf
                     @method('PUT')
                     <div class="modal-header border-0">
@@ -101,7 +101,7 @@
     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content card bg-dark">
-                <form method="POST" action="{{ route('users.store') }}">
+                <form method="POST" action="{{ route('admin.users.store') }}">
                     @csrf
                     <div class="modal-header border-0">
                         <h5 class="modal-title text-white" id="createModalLabel">Crear Usuario</h5>

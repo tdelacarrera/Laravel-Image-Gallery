@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('id', 'desc')->paginate(10);
-        return view('users.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -36,7 +36,7 @@ class UserController extends Controller
         ]);
 
         User::create($data);
-        return redirect()->route('users.index')->with('success', 'Usuario creado con éxito');
+        return redirect()->route('admin.users.index')->with('success', 'Usuario creado con éxito');
     }
 
     /**
@@ -71,7 +71,7 @@ class UserController extends Controller
           $user->password = bcrypt($request->password);
         }
         $user->save();
-        return redirect()->route('users.index')->with('success', 'Usuario actualizado con éxito');
+        return redirect()->route('admin.users.index')->with('success', 'Usuario actualizado con éxito');
     }
 
     /**
@@ -80,6 +80,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'Usuario eliminado con éxito');
+        return redirect()->route('admin.users.index')->with('success', 'Usuario eliminado con éxito');
     }
 }
