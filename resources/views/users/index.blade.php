@@ -33,8 +33,9 @@
                                     Editar
                                 </button>
 
-                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('users.destroy', $user) }}" method="POST" class="d-inline">
                                     @csrf
+                                    @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</button>
                                 </form>
                             </td>
@@ -61,8 +62,9 @@
     <div class="modal fade" id="editModal{{ $user->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $user->id }}" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content card bg-dark">
-                <form method="POST" action="{{ route('users.update', $user->id) }}">
+                <form method="POST" action="{{ route('users.update', $user) }}">
                     @csrf
+                    @method('PUT')
                     <div class="modal-header border-0">
                         <h5 class="modal-title text-white" id="editModalLabel{{ $user->id }}">Editar Usuario</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>

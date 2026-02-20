@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Image::factory(50)->create();
-         User::factory(50)->create();
+        User::factory(50)->create();
     }
 }

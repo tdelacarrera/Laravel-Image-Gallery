@@ -40,7 +40,7 @@ Create a new database and update your .env
     
 **6. Build frontend assets**
 
-    npm run dev
+    npm run build
 
 **7. Start the server**
 
