@@ -2,13 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\CategoryController;
 
-Route::get('/', [ImageController::class, 'index'])->name('index');
 
-Route::resource('images', ImageController::class);
-Route::get('images/search', [ImageController::class, 'search']);
+Route::get('/', [ImageController::class, 'publicIndex']);
+Route::get('images', [ImageController::class, 'publicIndex'])->name('images.index');
+
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';

@@ -22,7 +22,7 @@
     @foreach($images as $image)
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
-                <a href="{{ route('images.show', ['image' => $image]) }}">
+                <a href="{{ route('admin.images.show', ['image' => $image]) }}">
                     <img class="card-img-top" src="{{ asset('storage/images/'. $image->path) }}" alt="Imagen" onError="this.onerror=null;this.src='default-image.jpg';">
                 </a>
             </div>

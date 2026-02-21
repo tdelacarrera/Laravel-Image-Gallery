@@ -4,15 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-         $search = $request->input('search');
+        $images = Image::orderBy('id', 'desc')->paginate(10);
+        $categories = Category::all();
+        return view('admin.images.index', compact('images', 'categories'));
+    }
+
+    public function publicIndex(Request $request)
+    {
+        $search = $request->input('search');
         $imagesQuery = Image::query();
 
         if ($search) {
@@ -29,15 +38,17 @@ class ImageController extends Controller
         $tags = array_unique($tags);
         sort($tags);
 
-        return view('images.index', compact('images', 'tags', 'search'));
+        return view('images.index', compact('images', 'tags', 'search',));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('images.form');
+        //
     }
 
     /**
@@ -45,28 +56,30 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'file' => 'required|image|mimes:jpg,jpeg,png,gif',
+        $data = $request->validate([
+            'image' => 'required|image',
             'tags' => 'nullable|string',
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        $image = new Image();
-        $image->path = basename($request->file('file')->store('images', 'public'));
-        $image->tags = $request->tags;
-    
+        if ($request->hasFile('image')) {
+            $data['path'] = basename(
+                $request->file('image')->store('images', 'public')
+            );
+        }
 
-        $image->save();
+        Image::create($data);
 
-        return redirect()->route('images.index');
+        return redirect()->route('admin.images.index');
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Image $image)
     {
-        return view('images.show', compact('image'));
+        return view('admin.images.show', compact('image'));
     }
 
     /**
@@ -80,9 +93,28 @@ class ImageController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+
     public function update(Request $request, Image $image)
     {
-        //
+        $data = $request->validate([
+            'image' => 'nullable|image',
+            'tags' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        if($request->hasFile('image')){
+
+        if($image->path){
+                Storage::delete($image->path);
+        }
+            $data['path'] = basename(
+                $request->file('image')->store('images', 'public')
+            );
+        }
+
+        $image->update($data);
+        return redirect()->route('admin.images.index');
     }
 
     /**
@@ -90,6 +122,7 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        //
+        $image->delete();
+        return redirect()->route('admin.images.index')->with('success', 'Imagen eliminada con éxito');
     }
 }

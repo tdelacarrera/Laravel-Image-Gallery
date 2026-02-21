@@ -15,9 +15,9 @@
     <div class="sidebar">
         <h4 class="mb-4">Galería</h4>
         <nav class="nav flex-column">
-            <a class="nav-link" href="{{ route('images.index') }}">Imágenes</a>
-             @auth
-            <a class="nav-link" href="{{ route('images.create') }}">Subir Imagen</a>
+            <a class="nav-link" href="{{ route('images.index') }}">Buscar Imágenes</a>
+            @auth
+            <a class="nav-link" href="{{ route('admin.images.index') }}">Imágenes</a>
             <a class="nav-link" href="{{ route('admin.users.index') }}">Usuarios</a>
             <a class="nav-link" href="{{ route('admin.categories.index') }}">Categorías</a>
             @endauth
