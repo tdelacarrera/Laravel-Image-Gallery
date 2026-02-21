@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-8">
             <!-- Imagen con tamaño fijo y ajustable -->
-            <img src="{{ asset('storage/images/' . $image->path) }}" 
+            <img src="{{ asset('storage/' . $image->path) }}"
                  alt="image" 
                  class="img-fluid rounded shadow-sm mb-3" 
                  style="max-width: 100%; height: auto; max-height: 500px;">

@@ -63,9 +63,7 @@ class ImageController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $data['path'] = basename(
-                $request->file('image')->store('images', 'public')
-            );
+            $data['path'] = Storage::put('images', $request->image);
         }
 
         Image::create($data);
@@ -105,12 +103,10 @@ class ImageController extends Controller
 
         if($request->hasFile('image')){
 
-        if($image->path){
+            if($image->path){
                 Storage::delete($image->path);
-        }
-            $data['path'] = basename(
-                $request->file('image')->store('images', 'public')
-            );
+            }
+            $data['path'] = Storage::put('images', $request->image);
         }
 
         $image->update($data);
@@ -122,6 +118,10 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
+        if($image->path){
+            Storage::delete($image->path);
+         }
+    
         $image->delete();
         return redirect()->route('admin.images.index')->with('success', 'Imagen eliminada con éxito');
     }
